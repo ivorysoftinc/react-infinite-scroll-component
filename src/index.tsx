@@ -73,7 +73,9 @@ export default class InfiniteScroll extends Component<Props, State> {
       );
     }
 
-    this._scrollableNode = this.getScrollableTarget();
+    // eslint-disable-next-line
+    // @ts-ignore
+    this._scrollableNode = document.getElementById('loop-extension-root-frame').contentDocument.getElementById(this.props.scrollableTarget);
     this.el = this.props.height
       ? this._infScroll
       : this._scrollableNode || window;
@@ -149,13 +151,10 @@ export default class InfiniteScroll extends Component<Props, State> {
   }
 
   getScrollableTarget = () => {
-    console.log('');
     if (this.props.scrollableTarget instanceof HTMLElement) {
-      console.log('2');
       return this.props.scrollableTarget;
     }
     if (typeof this.props.scrollableTarget === 'string') {
-      console.log('3');
       return document.getElementById(this.props.scrollableTarget);
     }
     if (this.props.scrollableTarget === null) {
