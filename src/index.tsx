@@ -149,9 +149,13 @@ export default class InfiniteScroll extends Component<Props, State> {
   }
 
   getScrollableTarget = () => {
-    if (this.props.scrollableTarget instanceof HTMLElement)
+    console.log('');
+    if (this.props.scrollableTarget instanceof HTMLElement) {
+      console.log('2');
       return this.props.scrollableTarget;
+    }
     if (typeof this.props.scrollableTarget === 'string') {
+      console.log('3');
       return document.getElementById(this.props.scrollableTarget);
     }
     if (this.props.scrollableTarget === null) {
